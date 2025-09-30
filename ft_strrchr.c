@@ -27,3 +27,7 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
+/*int main(void)
+{
+	printf("%s\n", ft_strrchr("Bonjour", 'o'));
+}*/

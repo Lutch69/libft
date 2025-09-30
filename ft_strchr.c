@@ -19,11 +19,13 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == (unsigned char)c)
+		if (s[i] == c)
 			return ((char *)&s[i]);
 		i++;
 	}
-	if (!c)
-		return ((char *)&s[i]);
 	return (NULL);
 }
+//int main(void)
+//{
+//	printf("%s\n", ft_strchr("Bonjour", 'o'));
+//}
