@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:32:14 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/09/30 18:22:17 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:40:04 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,58 @@ size_t ft_countword(char const *str, char c)
     return (word);
 }
 
-void    ft_totallen(char **str, char const *s1, char c)
+void    ft_strcpylines(char **str, char const *s1, int c, size_t word)
+{
+    size_t i;
+    size_t buff;
+    size_t j;
+
+    j = 0;
+    i = 0;
+    buff = 0;
+    while(word > buff)
+    {
+        j = 0;
+        while(ft_issep(s1[i], c) && s1[i])
+            i++;
+        while(s1[i] && !ft_issep(s1[i], c))
+        {
+            str[buff][j] = s1[i];
+            i++;
+            j++;
+        }
+        buff++;
+    }
+}
+void    *ft_totallen(char **str, char const *s1, char c, size_t word)
 {
     size_t  len;
     size_t  i;
-    size_t word;
+    size_t buff;
 
     i = 0;
     len = 0;
-    word = 0;
-    while(str[word])
+    buff = 0;
+    while(word > buff)
     {
+        while (ft_issep(s1[i], c) && s1[i])
+            i++;
         while(s1[i] && !ft_issep(s1[i], c))
         {
-            if (ft_issep(s1[i], c) && s1[i - 1] != c)
-                str[word] = malloc(sizeof(char) * len + 1);
-                if (!newstr)
-                    return(NULL);
-            len++;
-            i++;
+                i++;
+                len++;
         }
-        word++;
+        if (ft_issep(s1[i], c) && s1[i - 1] != c)
+        {
+            str[buff] = malloc(sizeof(char) * len + 1);
+            if (!str)
+                return(NULL);
+        }
+    buff++;
     }
+    return(NULL);
 }
+
 char    **ft_split(char const *s1, char c)
 {
     char    **newstr;
@@ -73,7 +102,8 @@ char    **ft_split(char const *s1, char c)
     if (!newstr)
         return(NULL);
     newstr[word] = NULL;
-    ft_totallen(newstr, s1, c);
+    ft_totallen(newstr, s1, c, word);
+    ft_strcpylines(newstr, s1, c, word);
     return(newstr);
 }
 
