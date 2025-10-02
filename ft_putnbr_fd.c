@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/02 14:32:48 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/02 15:09:08 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	long	nb;
 
-	i = 0;
-	while (s[i])
+	nb = n;
+	if (nb < 0)
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
+		ft_putchar_fd('-', fd);
+		nb *= -1;
 	}
-	if ((unsigned char)c == 0)
-		return((char *)s);
-	return (NULL);
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + 0, fd);
 }
-//int main(void)
-//{
-//	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}
+int	main(void)
+{
+	ft_putnbr_fd(155, 1);
+}

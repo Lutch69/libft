@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/02 15:40:03 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/02 18:45:27 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if ((unsigned char)c == 0)
-		return((char *)s);
-	return (NULL);
+	t_list *res;
+	res = malloc(sizeof(t_list));
+	res->content = content;
+	res->next = NULL;
+	return(res);
 }
-//int main(void)
-//{
-//	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}
+
+// int	main(void)
+// {
+// 	t_list *node1;
+// 	node1 = ft_lstnew("abc");
+// 	printf("%s\n", (char *)node1->content);
+// }

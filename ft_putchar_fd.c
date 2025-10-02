@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/02 14:25:06 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/02 14:27:38 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if ((unsigned char)c == 0)
-		return((char *)s);
-	return (NULL);
+	write(fd, &c, 1);
 }
-//int main(void)
-//{
-//	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}

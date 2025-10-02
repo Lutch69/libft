@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/02 18:40:19 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/02 19:00:49 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*temp;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if ((unsigned char)c == 0)
-		return((char *)s);
-	return (NULL);
+	temp = *lst;
+	temp->content = new;
+	new = temp;
 }
-//int main(void)
-//{
-//	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}
+
+int	main(void)
+{
+	t_list *node1 = ft_lstnew("789");
+	t_list *node2 = ft_lstnew("456");
+	t_list *header = ft_lstnew("123");
+	ft_lstadd_front(&header, node1);
+	ft_lstadd_front(&header, node2);
+	printf("%s\n", (char *)header->content);
+}

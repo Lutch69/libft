@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/02 13:37:54 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/02 14:22:07 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
+	unsigned int	i;
+	char			*res;
+	size_t			len;
 
 	i = 0;
+	len = ft_strlen(s) + 1;
+	res = malloc(sizeof(char) * len);
+	if (!res)
+		return (NULL);
 	while (s[i])
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
+		res[i] = ((*f)(i, s[i]));
 		i++;
 	}
-	if ((unsigned char)c == 0)
-		return((char *)s);
-	return (NULL);
+	return (res);
 }
-//int main(void)
-//{
-//	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}
