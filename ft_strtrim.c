@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:21:12 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/09/30 16:55:27 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:47:14 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strtrim(char const *s1, char const *set)
     newstr = ft_substr(s1, start, (end - start) + 1);
     return(newstr);
 }
-int main(void)
+/*int main(void)
 {
-    printf("%s\n", ft_strtrim("ABbonjourAB", "AB"));
-}
+    printf("%s\n", ft_strtrim("ABABABABAB", "AB"));
+}*/
