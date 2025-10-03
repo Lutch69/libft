@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 18:40:19 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/03 14:24:13 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/03 12:54:27 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/03 14:33:56 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
 
-	temp = *lst;
-	new->next = temp;
-	*lst = new;
+	temp = ft_lstlast(*lst);
+	if(temp)
+		temp->next = new;
+	else
+		*lst = temp;
 }
+
 // int	main(void)
 // {
 // 	t_list *node1 = ft_lstnew("1,2,3,");
 // 	t_list *node2 = ft_lstnew("4,5,6,");
-// 	t_list *header = ft_lstnew("7,8,9");
+// 	t_list *header = ft_lstnew("7,8,9,");
 // 	ft_lstadd_front(&header, node2);
 // 	ft_lstadd_front(&header, node1);
-// 	printf("%s", (char *)header->content);
-// 	printf("%s", (char *)header->next->content);
-// 	printf("%s", (char *)header->next->next->content);
+// 	ft_lstadd_back(&header, ft_lstnew("10,11,12"));
+// 	while(header->next)
+// 	{
+// 		printf("%s\n", (char *)header->content);
+// 		header = header->next;
+// 	}
+// 		printf("%s\n", (char *)header->content);
 // }

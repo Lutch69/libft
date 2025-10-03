@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 18:40:19 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/03 14:24:13 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/03 14:35:01 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/03 17:17:46 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*temp;
-
-	temp = *lst;
-	new->next = temp;
-	*lst = new;
+	if (!lst)
+		return;
+	del (lst->content);
+	free (lst);
 }
+
+// void	ft_free(void *content)
+// {
+// 	if(content)
+// 		free(content);
+// }
+
 // int	main(void)
 // {
-// 	t_list *node1 = ft_lstnew("1,2,3,");
-// 	t_list *node2 = ft_lstnew("4,5,6,");
-// 	t_list *header = ft_lstnew("7,8,9");
+// 	t_list *node1 = ft_lstnew(ft_strdup("1,2,3,"));
+// 	t_list *node2 = ft_lstnew(ft_strdup("4,5,6,"));
+// 	t_list *header = ft_lstnew(ft_strdup("7,8,9,"));
 // 	ft_lstadd_front(&header, node2);
 // 	ft_lstadd_front(&header, node1);
-// 	printf("%s", (char *)header->content);
-// 	printf("%s", (char *)header->next->content);
-// 	printf("%s", (char *)header->next->next->content);
+// 	ft_lstdelone(header, ft_free);
 // }

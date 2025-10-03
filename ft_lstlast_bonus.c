@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 15:40:03 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/03 13:54:32 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/03 12:43:37 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/03 14:24:33 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *res;
-	res = malloc(sizeof(t_list));
-	if (!res)
+	if(!lst)
 		return(NULL);
-	res->content = content;
-	res->next = NULL;
-	return(res);
+	while(lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
-// int	main(void)
-// {
-// 	t_list *node1;
-// 	node1 = ft_lstnew("abc");
-// 	printf("%s\n", (char *)node1->content);
-// }
+/*int	main(void)
+{
+	t_list *node1 = ft_lstnew("1,2,3,");
+	t_list *node2 = ft_lstnew("4,5,6,");
+	t_list *header = ft_lstnew("7,8,9");
+	t_list *last;
+	ft_lstadd_front(&header, node2);
+	ft_lstadd_front(&header, node1);
+	printf("%s\n", (char *)header->content);
+	last = ft_lstlast(header);
+	printf("%s\n", (char *)last->content);
+}*/

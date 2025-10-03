@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:32:14 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/02 15:44:57 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/03 16:38:03 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ void    *ft_malloc_lines(char **newstr, const char *str, char c)
             word++;
         }
     }
+    return (NULL);
 }
 
-void * ft_copy_lines(char **newstr, const char *str, char c, size_t total_word)
+void  *ft_copy_lines(char **newstr, const char *str, char c, size_t total_word)
 {
     size_t i;
     size_t count_word;
@@ -83,7 +84,7 @@ void * ft_copy_lines(char **newstr, const char *str, char c, size_t total_word)
         }
         count_word++;
     }
-
+    return (NULL);
 }
 
 char    **ft_split(const char*s1, char c)
