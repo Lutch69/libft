@@ -6,7 +6,7 @@
 /*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:26:34 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/09/30 11:17:19 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/05 15:11:34 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *newstr;
-	size_t len1;
-	size_t len2;
-	size_t i;
+	char	*newstr;
+	size_t	len1;
+	size_t	len2;
 
-	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	newstr = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!newstr)
-		return(NULL);
-	while (i < len1)
-	{
-		newstr[i] = s1[i];
-		i++;
-	}
+		return (NULL);
+	ft_strlcpy(newstr, s1, len1 + 1);
 	ft_strlcat(newstr, s2, len1 + len2 + 1);
-	return(newstr);
+	return (newstr);
 }
 // int main(void)
 // {

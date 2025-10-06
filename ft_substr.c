@@ -6,7 +6,7 @@
 /*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 12:03:08 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/09/30 10:34:27 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/05 15:41:51 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t n;
-	size_t lens;
-	size_t dispo;
-	char *dst;
+	size_t	n;
+	size_t	lens;
+	size_t	dispo;
+	char	*dst;
 
 	lens = ft_strlen(s);
 	dispo = (lens - start);
@@ -25,9 +25,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		dst = malloc(sizeof(char));
 		if (!dst)
-			return(NULL);
+			return (NULL);
 		dst[0] = '\0';
-		return(dst);
+		return (dst);
 	}
 	if (len < dispo)
 		n = len + 1;
@@ -35,7 +35,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		n = dispo + 1;
 	dst = malloc(sizeof(char) * (n));
 	if (!dst)
-		return(NULL);
+		return (NULL);
 	ft_strlcpy(dst, &s[start], n);
-	return(dst);
+	return (dst);
 }
+// int main(void)
+// {
+// 	char *str;
+// 	str = ft_substr("salut comment ca va?", 6, 7);
+// 	printf("%s\n", str);
+// }

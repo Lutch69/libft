@@ -3,114 +3,104 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:32:14 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/03 16:38:03 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/06 07:54:11 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_countword(char const *str, char c)
+static size_t	ft_countword(char const *str, char c)
 {
-    size_t  i;
-    size_t  word;
+	size_t	i;
+	size_t	word;
 
-    i = 0;
-    word = 0;
-    while (str[i])
-    {
-        while(str[i] == c && str[i])
-            i++;
-        if (str[i] != c && str[i])
-            word++;
-        while (str[i] != c && str[i])
-            i++;
-    }
-    return (word);
+	i = 0;
+	word = 0;
+	while (str[i])
+	{
+		while (str[i] == c && str[i])
+			i++;
+		if (str[i] != c && str[i])
+			word++;
+		while (str[i] != c && str[i])
+			i++;
+	}
+	return (word);
 }
 
-void    *ft_malloc_lines(char **newstr, const char *str, char c)
+static void	ft_freetab(char **newstr, size_t word)
 {
-    size_t len;
-    size_t  i;
-    size_t word;
-
-    word = 0;
-    i = 0;
-    len = 0;
-    while (str[i])
-    {
-        len = 0;
-        while (str[i] == c && str[i])
-            i++;
-        while (str[i] != c && str[i])
-        {
-            len++;
-            i++;
-        }
-        if (len > 0)
-        {
-            newstr[word] = malloc(sizeof(char) * (len + 1));
-            if (!newstr)
-                return (NULL);
-            word++;
-        }
-    }
-    return (NULL);
+	while (word-- > 0)
+		free(newstr[word]);
+	free(newstr);
 }
 
-void  *ft_copy_lines(char **newstr, const char *str, char c, size_t total_word)
+static int	ft_copy_lines(char **newstr, const char *str, char c, size_t word)
 {
-    size_t i;
-    size_t count_word;
-    size_t count_char;
+	size_t	i;
+	size_t	count_word;
+	size_t	start;
 
-    count_char = 0;
-    count_word = 0;
-
-    i = 0;
-    while (count_word < total_word)
-    {
-        count_char = 0;
-        while (str[i] == c && str[i])
-            i++;
-        while (str[i] != c && str[i])
-        {
-            newstr[count_word][count_char] = str[i];
-            i++;
-            count_char++;
-        }
-        count_word++;
-    }
-    return (NULL);
+	count_word = 0;
+	i = 0;
+	while (count_word < word && str[i])
+	{
+		while (str[i] == c && str[i])
+			i++;
+		start = i;
+		while (str[i] != c && str[i])
+			i++;
+		if (i - start)
+		{
+			newstr[count_word] = ft_substr(str, start, i - start);
+			if (!newstr[count_word])
+			{
+				ft_freetab(newstr, count_word);
+				return (0);
+			}
+			count_word++;
+		}
+	}
+	return (1);
 }
 
-char    **ft_split(const char*s1, char c)
+char	**ft_split(const char *s1, char c)
 {
-    char    **newstr;
-    size_t word;
+	char	**newstr;
+	size_t	word;
 
-    word = ft_countword(s1, c);
-    newstr = malloc(sizeof(char *) * (word + 1));
-    if (!newstr)
-        return (NULL);
-    newstr[word] = NULL;
-    ft_malloc_lines(newstr, s1, c);
-    ft_copy_lines(newstr, s1, c, word);
-    return (newstr);
+	if (!s1)
+		return (NULL);
+	word = ft_countword(s1, c);
+	newstr = malloc(sizeof(char *) * (word + 1));
+	if (!newstr)
+		return (NULL);
+	newstr[word] = NULL;
+	if (ft_copy_lines(newstr, s1, c, word))
+		return (newstr);
+	else
+		return (NULL);
 }
 
-int main(void)
-{
-    char **newstr;
-    int i = 0;
-    newstr = ft_split("Bonjour comment ca va ?", 32);
-    while(newstr[i])
-    {
-        printf("%s\n", newstr[i]);
-        i++;
-    }
-    free(newstr);
-}
+// int	main(void)
+// {
+// 	char	**newstr;
+// 	int		i;
+
+// 	i = 0;
+// 	newstr = ft_split("Bonjour comment ca va ?", 32);
+// 	while (newstr[i])
+// 	{
+// 		printf("%s\n", newstr[i]);
+// 		i++;
+// 	}
+// 	while (i > 0)
+// 	{
+// 		free(newstr[i]);
+// 		i--;
+// 	}
+// 	free(newstr);
+// }

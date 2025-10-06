@@ -14,33 +14,33 @@
 
 int	ft_countlen(int long n)
 {
-	int len;
+	int	len;
 
 	len = 1;
 	if (n == 0)
-		return(1);
-	while(n > 0)
+		return (1);
+	while (n > 0)
 	{
 		n /= 10;
 		len++;
 	}
-	return(len);
+	return (len);
 }
 
-int ft_isneg(int n)
+int	ft_isneg(int n)
 {
 	if (n >= 0)
-		return(1);
+		return (1);
 	else
 		return (0);
 }
 
 char	*ft_itoa(int n)
 {
-	char *str;
-	int signe;
-	int long count;
-	int long nb;
+	char		*str;
+	int			signe;
+	int long	count;
+	int long	nb;
 
 	signe = 0;
 	nb = n;
@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 	count = ft_countlen(nb);
 	str = malloc(sizeof(char) * count + signe + 1);
 	if (!str)
-		return(NULL);
+		return (NULL);
 	str[count] = '\0';
 	while (count-- >= 0)
 	{
@@ -61,7 +61,7 @@ char	*ft_itoa(int n)
 	}
 	if (signe)
 		str[0] = '-';
-	return(str);
+	return (str);
 }
 /*int	main(void)
 {

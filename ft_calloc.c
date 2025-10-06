@@ -6,7 +6,7 @@
 /*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 12:04:06 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/09/27 10:23:34 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/06 08:35:06 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*tab;
+	void	*ptr;
 
-	if (size && count > SIZE_MAX / size)
+	if (size != 0 && count > SIZE_MAX / size)
 		return (NULL);
-	tab = malloc(size * count);
-	if (!tab)
+	ptr = malloc(size * count);
+	if (!ptr)
 		return (NULL);
-	ft_bzero(tab, (count * size));
-	return (tab);
+	ft_bzero(ptr, (count * size));
+	return (ptr);
 }
 // int main(void)
 // {
 // 	size_t i = 0;
-// 	void *p = ft_calloc(5, 3);
-// 	while(i < 15)
+// 	void *str = ft_calloc(30, 1);
+// 	while(i < 30)
 // 	{
-// 		if(((unsigned char *)p)[i])
+// 		if(((char *)str)[i])
 // 			write(1, "X", 1);
 // 		i++;
 // 	}
+// 	free(str);
 // }

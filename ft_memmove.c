@@ -6,7 +6,7 @@
 /*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:18:15 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/09/27 10:23:18 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/06 09:30:21 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,30 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	const unsigned char	*realsrc;
 
 	i = 0;
+	if ((!dst && !src) || dst == src || n == 0)
+		return (dst);
 	realdst = (unsigned char *)dst;
 	realsrc = (const unsigned char *)src;
-	if (realdst > realsrc)
+	if (realdst < realsrc)
 	{
-		i = n;
-		while (i > 0)
-		{
-			i--;
-			realdst[i] = realsrc[i];
-		}
-	}
-	else
+		i = 0;
 		while (i < n)
 		{
 			realdst[i] = realsrc[i];
 			i++;
 		}
+	}
+	else
+	{
+		i = n;
+		while (i-- > 0)
+			realdst[i] = realsrc[i];
+	}
 	return (dst);
 }
+// int main(void)
+// {
+// 	char buf[8] = "abcdef";
+// 	ft_memmove(buf, buf+1, 5);
+// 	printf("%s", buf);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:24:52 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/02 14:46:42 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/06 08:18:39 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	*ft_strchr(const char *s, int c)
 		i++;
 	}
 	if ((unsigned char)c == 0)
-		return((char *)s);
+		return ((char *)&s[i]);
 	return (NULL);
 }
-//int main(void)
+// int main(void)
 //{
 //	printf("%s\n", ft_strchr("Bonjour", 'o'));
-//}
+// }
