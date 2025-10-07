@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:32:14 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/06 07:54:11 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/07 12:54:34 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_countword(char const *str, char c)
+size_t	ft_countword(char const *str, char c)
 {
 	size_t	i;
 	size_t	word;
@@ -31,14 +31,14 @@ static size_t	ft_countword(char const *str, char c)
 	return (word);
 }
 
-static void	ft_freetab(char **newstr, size_t word)
+void	ft_freetab(char **newstr, size_t word)
 {
 	while (word-- > 0)
 		free(newstr[word]);
 	free(newstr);
 }
 
-static int	ft_copy_lines(char **newstr, const char *str, char c, size_t word)
+int	ft_copy_lines(char **newstr, const char *str, char c, size_t word)
 {
 	size_t	i;
 	size_t	count_word;

@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 18:40:19 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/03 14:24:13 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:39:13 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	t_list	*temp;
 
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
 	temp = *lst;
 	new->next = temp;
 	*lst = new;

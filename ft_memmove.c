@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:18:15 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/06 09:30:21 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/07 15:27:29 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

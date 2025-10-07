@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 15:55:32 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/07 15:08:50 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/10/07 13:28:19 by ludebarn          #+#    #+#             */
+/*   Updated: 2025/10/07 15:22:10 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstiter(t_list *lst, void (f)(void *))
 {
 	t_list	*temp;
 
-	if (!lst)
+	temp = lst;
+	if (!lst || !f)
 		return ;
-	while (*lst)
+	while (temp != NULL)
 	{
-		temp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
+		f(temp->content);
+		temp = temp->next;
 	}
 }
-
-// void	ft_free(void *content)
+// void	to_upper(void *content)
 // {
-// 	if (content)
-// 		free(content);
+// 	char *s = (char *)content;
+// 	while (*s)
+// 	{
+// 		if (*s >= 'a' && *s <= 'z')
+// 			*s -= 32;
+// 		s++;
+// 	}
 // }
 
 // int	main(void)
@@ -38,10 +42,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 // 	t_list	*node2;
 // 	t_list	*header;
 
-// 	node1 = ft_lstnew(ft_strdup("1,2,3,"));
-// 	node2 = ft_lstnew(ft_strdup("4,5,6,"));
-// 	header = ft_lstnew(ft_strdup("7,8,9,"));
+// 	node1 = ft_lstnew(ft_strdup("abc"));
+// 	node2 = ft_lstnew(ft_strdup("def"));
+// 	header = ft_lstnew(ft_strdup("ijk"));
 // 	ft_lstadd_front(&header, node2);
 // 	ft_lstadd_front(&header, node1);
-// 	ft_lstclear(&header, ft_free);
+// 	ft_lstiter(header, to_upper);
+// 	printf("%s", (char *)header->content);
+// 	printf("%s", (char *)header->next->content);
+// 	printf("%s", (char *)header->next->next->content);
 // }

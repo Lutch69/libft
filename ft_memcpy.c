@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:24:42 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/06 08:41:49 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/10/07 14:23:11 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	const unsigned char	*realsrc;
 
 	i = 0;
-	if(!dst || !src)
-		return(NULL);
+	if ((!dst && !src) && n)
+		return (NULL);
 	realdst = (unsigned char *)dst;
 	realsrc = (const unsigned char *)src;
 	while (i < n)
