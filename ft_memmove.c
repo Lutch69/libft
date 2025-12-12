@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:18:15 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/07 15:27:29 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:00:49 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 // int main(void)
 // {
 // 	char buf[8] = "abcdef";
-// 	ft_memmove(buf, buf+1, 5);
+// 	ft_memmove(buf, buf+3, 3);
 // 	printf("%s", buf);
 // }

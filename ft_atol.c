@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/27 10:25:05 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/11/19 16:14:02 by ludebarn         ###   ########.fr       */
+/*   Created: 2025/11/08 12:32:28 by lucasdebarn       #+#    #+#             */
+/*   Updated: 2025/12/06 15:46:23 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+long	ft_atol(char *str)
 {
-	int	i;
+	long	nb;
+	int		sign;
+	int		i;
 
+	nb = 0;
+	sign = 1;
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			sign = -1;
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = nb * 10 + (str[i++] - '0');
+	return (nb * sign);
 }

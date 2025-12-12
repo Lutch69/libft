@@ -6,13 +6,13 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:32:14 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/07 12:54:34 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:16:49 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_countword(char const *str, char c)
+static size_t	ft_countword(char const *str, char c)
 {
 	size_t	i;
 	size_t	word;
@@ -31,14 +31,14 @@ size_t	ft_countword(char const *str, char c)
 	return (word);
 }
 
-void	ft_freetab(char **newstr, size_t word)
+static void	ft_freetab(char **newstr, size_t word)
 {
 	while (word-- > 0)
 		free(newstr[word]);
 	free(newstr);
 }
 
-int	ft_copy_lines(char **newstr, const char *str, char c, size_t word)
+static int	ft_copy_lines(char **newstr, const char *str, char c, size_t word)
 {
 	size_t	i;
 	size_t	count_word;
@@ -88,19 +88,6 @@ char	**ft_split(const char *s1, char c)
 // int	main(void)
 // {
 // 	char	**newstr;
-// 	int		i;
-
-// 	i = 0;
-// 	newstr = ft_split("Bonjour comment ca va ?", 32);
-// 	while (newstr[i])
-// 	{
-// 		printf("%s\n", newstr[i]);
-// 		i++;
-// 	}
-// 	while (i > 0)
-// 	{
-// 		free(newstr[i]);
-// 		i--;
-// 	}
-// 	free(newstr);
+// 	newstr = ft_split(" ", 32);
+// 	printf("%p\n", *newstr);
 // }

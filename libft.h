@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:25:53 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/10/07 14:20:39 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/12 16:18:12 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -46,12 +48,15 @@ void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int			ft_atoi(const char *str);
+double		ft_atof(char *str);
+long		ft_atol(char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_itoa(int n);
+char		*ft_ftoa(double n, int fnb);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		**ft_split(const char *s1, char c);
@@ -68,5 +73,17 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+// printf
+int		ft_printf(const char *str, ...);
+int		ft_checkformat_printf(const char c, va_list *param);
+int		ft_putchar_printf(int c);
+int		ft_putstr_printf(char *str);
+char	*ft_strchr_printf(const char *s, int c);
+int		ft_putdigit_printf(const char c, va_list *param);
+int		ft_putnbr_base_printf(char *base, unsigned long n, unsigned int lenbase,
+			const char c);
+void	put_base_printf(unsigned long nbr, char *base, unsigned int lenbase);
+int		ft_countlen_printf(unsigned long nb, unsigned int lenbase);
+int		get_float_printf(char c, va_list *param);
 
 #endif

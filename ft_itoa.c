@@ -6,13 +6,13 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:08:45 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/10/07 14:16:55 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/11 13:40:38 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_countlen(int long n)
+static int	ft_countlen(int long n)
 {
 	int	len;
 
