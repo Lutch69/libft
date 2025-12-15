@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:25:53 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/12/12 16:18:12 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:28:52 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		ft_putnbr_base_printf(char *base, unsigned long n, unsigned int lenbase,
 			const char c);
 void	put_base_printf(unsigned long nbr, char *base, unsigned int lenbase);
 int		ft_countlen_printf(unsigned long nb, unsigned int lenbase);
-int		get_float_printf(char c, va_list *param);
+int		get_float_printf(int precision, double value);
+int		float_format(char c, va_list *param, size_t *i, const char *str);
 
 #endif

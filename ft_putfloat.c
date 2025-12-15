@@ -3,63 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:29:49 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/12/12 16:16:37 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/15 13:40:34 by lucasdebarn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_fnbr(double fnb)
+int float_format(char c, va_list *param, size_t *i, const char *str)
 {
-	int	count;
+	int precision;
+	int count;
 
 	count = 0;
-	while(1)
+	precision = 0;
+	if (c == '.')
 	{
-		fnb *= 10;
-		count++;
-		if (((int)fnb % 10) == 0)
-			break;
+		(*i)++;
+		while (ft_isdigit(str[*i]))
+			precision = (precision * 10) + str[*i++] - '0';
+		count += get_float_printf(precision, va_arg(*param, double));
 	}
-	return(count);
-}
-static int	get_inbr(int inb)
-{
-	int	count;
-
-	count = 0;
-	if (inb < 0)
-	{
-		inb *= -1;
-		count++;
-	}
-	while (inb > 0)
-	{
-		inb /= 10;
-		count++;
-	}
+	else if (c == 'f')
+			count += get_float_printf(6, va_arg(*param, double));
 	return (count);
 }
 
-int	get_float_printf(char c, va_list *param)
+int	get_float_printf(int precision, double value)
 {
-	int	count;
-	int	nb;
+	int		count;
+	char	*str;
 
-	count = get_inbr(va_arg(*param, int));
-	if (ft_isdigit(c) > 0)
-	{
-		nb = c + '0';
-		ft_ftoa(va_arg(*param, double), nb);
-
-	}
-	else if (c == 'f')
-	{
-		nb = get_fnbr(va_arg(*param, double));
-		ft_ftoa (va_arg(*param, double), nb);
-	}
-	return (nb + count);
+	count = 0;
+	str = NULL;
+	str = ft_ftoa (value, precision);
+	if (!str)
+		return (0);
+	count += ft_putstr_printf(str);
+	free(str);
+	return (count);
 }
