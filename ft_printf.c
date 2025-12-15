@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 22:55:22 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/12/15 13:42:15 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/12/15 15:08:34 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,3 @@ int	ft_printf(const char *str, ...)
 	va_end(param);
 	return (count);
 }
-
-// int	main(void)
-// {
-// 	ft_printf("%.5f", -15.6666);
-// }

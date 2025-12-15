@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 10:25:53 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/12/15 13:28:52 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/12/15 15:09:36 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,18 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // printf
-int		ft_printf(const char *str, ...);
-int		ft_checkformat_printf(const char c, va_list *param);
-int		ft_putchar_printf(int c);
-int		ft_putstr_printf(char *str);
-char	*ft_strchr_printf(const char *s, int c);
-int		ft_putdigit_printf(const char c, va_list *param);
-int		ft_putnbr_base_printf(char *base, unsigned long n, unsigned int lenbase,
-			const char c);
-void	put_base_printf(unsigned long nbr, char *base, unsigned int lenbase);
-int		ft_countlen_printf(unsigned long nb, unsigned int lenbase);
-int		get_float_printf(int precision, double value);
-int		float_format(char c, va_list *param, size_t *i, const char *str);
+int			ft_printf(const char *str, ...);
+int			ft_checkformat_printf(const char c, va_list *param);
+int			ft_putchar_printf(int c);
+int			ft_putstr_printf(char *str);
+char		*ft_strchr_printf(const char *s, int c);
+int			ft_putdigit_printf(const char c, va_list *param);
+int			ft_putnbr_base_printf(char *base, unsigned long n,
+				unsigned int lenbase, const char c);
+void		put_base_printf(unsigned long nbr, char *base,
+				unsigned int lenbase);
+int			ft_countlen_printf(unsigned long nb, unsigned int lenbase);
+int			get_float_printf(int precision, double value);
+int			float_format(char c, va_list *param, size_t *i, const char *str);
 
 #endif

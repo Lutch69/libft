@@ -6,7 +6,7 @@
 /*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 16:59:27 by lucasdebarn       #+#    #+#             */
-/*   Updated: 2025/12/06 14:40:21 by ludebarn         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:09:59 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static double	res(double res, int comma, int signe)
 	res = res / powerof;
 	return (signe * res);
 }
+
 static int	count_comma(char *str)
 {
 	int	i;

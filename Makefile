@@ -6,7 +6,7 @@
 #    By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 15:51:05 by ludebarn          #+#    #+#              #
-#    Updated: 2025/12/12 15:27:55 by ludebarn         ###   ########.fr        #
+#    Updated: 2025/12/15 14:30:26 by ludebarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJSALL = ${SRCSALL:.c=.o}
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I ./
+CFLAGS = -Wall -Werror -Wextra -g -I ./
 
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

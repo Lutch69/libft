@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+        */
+/*   By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:29:49 by ludebarn          #+#    #+#             */
-/*   Updated: 2025/12/15 13:40:34 by lucasdebarn      ###   ########.fr       */
+/*   Updated: 2025/12/15 15:09:04 by ludebarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int float_format(char c, va_list *param, size_t *i, const char *str)
+int	float_format(char c, va_list *param, size_t *i, const char *str)
 {
-	int precision;
-	int count;
+	int	precision;
+	int	count;
 
 	count = 0;
 	precision = 0;
 	if (c == '.')
 	{
 		(*i)++;
-		while (ft_isdigit(str[*i]))
-			precision = (precision * 10) + str[*i++] - '0';
+		precision = str[(*i)++] - '0';
 		count += get_float_printf(precision, va_arg(*param, double));
 	}
 	else if (c == 'f')
-			count += get_float_printf(6, va_arg(*param, double));
+		count += get_float_printf(6, va_arg(*param, double));
 	return (count);
 }
 
