@@ -1,5 +1,7 @@
 {
-	"files.associations": {
-		"libft.h": "c"
-	}
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false,
+        "editor.tabSize": 4
+    }
 }
