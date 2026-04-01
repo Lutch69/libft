@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucasdebarnot <lucasdebarnot@student.42    +#+  +:+       +#+         #
+#    By: ludebarn <ludebarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/23 09:44:49 by lucasdebarn       #+#    #+#              #
-#    Updated: 2025/12/23 09:51:17 by lucasdebarn      ###   ########.fr        #
+#    Updated: 2025/12/29 11:22:58 by ludebarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,13 +61,11 @@ SRCS = \
 	str/ft_strrchr.c \
 	str/ft_strtrim.c \
 	str/ft_substr.c \
+	str/ft_strcmp.c \
 	with_fd/ft_putchar_fd.c \
 	with_fd/ft_putendl_fd.c \
 	with_fd/ft_putnbr_fd.c \
-	with_fd/ft_putstr_fd.c
-
-# Bonus (lst)
-BONUS_SRCS = \
+	with_fd/ft_putstr_fd.c \
 	lst/ft_lstadd_back_bonus.c \
 	lst/ft_lstadd_front_bonus.c \
 	lst/ft_lstclear_bonus.c \
@@ -76,11 +74,11 @@ BONUS_SRCS = \
 	lst/ft_lstlast_bonus.c \
 	lst/ft_lstmap_bonus.c \
 	lst/ft_lstnew_bonus.c \
-	lst/ft_lstsize_bonus.c
+	lst/ft_lstsize_bonus.c\
+	with_fd/ft_split_clear.c
 
 # Objets correspondants (mappage .c -> object/dir/file.o)
 OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
-OBJS_BONUS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
 
 # Règles
 .PHONY: all bonus clean fclean re
@@ -88,14 +86,7 @@ OBJS_BONUS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "\n🔗 Archivage de libft..."
 	@$(AR) $@ $^
-	@echo "✅ libft compilée — bon courage !"
-
-bonus: $(OBJS) $(OBJS_BONUS)
-	@echo "\n🔗 Archivage de libft avec bonus (lst)..."
-	@$(AR) $(NAME) $^
-	@echo "✅ libft (bonus) compilée — enjoy !"
 
 # Règle générique : object/dir/file.o <- dir/file.c
 $(OBJ_DIR)/%.o: %.c
@@ -104,13 +95,9 @@ $(OBJ_DIR)/%.o: %.c
 	$(COMPILE_MSG)
 
 clean:
-	@echo "🧹 Nettoyage des objets..."
 	@$(RM) $(OBJ_DIR)
-	@echo "✅ Objets supprimés."
 
 fclean: clean
-	@echo "🧹 Nettoyage complet..."
 	@$(RM) $(NAME)
-	@echo "✅ libft supprimée."
 
 re: fclean all
